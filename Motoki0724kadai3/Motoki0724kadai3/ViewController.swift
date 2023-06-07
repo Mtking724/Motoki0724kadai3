@@ -17,36 +17,17 @@ class ViewController: UIViewController {
     @IBOutlet weak var numberLabel2: UILabel!
     @IBOutlet weak var culculatedResult: UILabel!
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view.
-    }
-    
     @IBAction func tapButton(_ sender: UIButton) {
         //teXtFieldにInt型を入れる
         let value1 = Int(textField1.text ?? "") ?? 0
         let value2 = Int(textField2.text ?? "") ?? 0
         
         //switchのonofで切り替える
-        let process1: Int
-        if mySwitch1.isOn {
-            process1 = -value1
-        } else {
-            process1 = value1
-        }
-        
-        let process2: Int
-        if mySwitch2.isOn {
-            process2 = -value2
-        } else {
-            process2 = value2
-        }
-                
-            numberLabel1.text = String("\(process1)")
-            numberLabel2.text = String("\(process2)")
-            culculatedResult.text = String(process1 + process2)
-                
-                
-            }
-        }
+        let process1 = mySwitch1.isOn ? -value1 : value1
+        let process2 = mySwitch2.isOn ? -value2 : value2
 
+        numberLabel1.text = String(process1)
+        numberLabel2.text = String(process2)
+        culculatedResult.text = String(process1 + process2)
+    }
+}
